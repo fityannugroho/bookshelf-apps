@@ -33,7 +33,7 @@
         <div class="col col-30">
           <div class="card">
             <h2 class="card-title">Tambah Buku</h2>
-            <form action="" class="input-form">
+            <form id="formAddBook" action="" class="input-form">
               <div class="input-field">
                 <label for="title">Judul</label>
                 <input type="text" name="title" id="title" required />
@@ -65,82 +65,11 @@
         <div class="col col-70">
           <section class="card">
             <h2 class="card-title">Belum Selesai Dibaca</h2>
-            <div class="book-items">
-              <article class="book-item">
-                <section class="book-item-content">
-                  <span class="book-title">Harry Potter</span>
-                  <div class="book-attrs">
-                    <div class="attr">
-                      <i class="fa-solid fa-feather-pointed fa-fw"></i>
-                      <span>J. K. Rowling</span>
-                    </div>
-                    <div class="attr">
-                      <i class="fa-solid fa-calendar-day fa-fw"></i>
-                      <span>1999</span>
-                    </div>
-                  </div>
-                </section>
-                <section class="book-item-actions">
-                  <button class="btn icon-btn">
-                    <i class="fa-regular fa-circle-check fa-2xl"></i>
-                  </button>
-                  <button class="btn icon-btn">
-                    <i class="fa-regular fa-trash-can fa-2xl"></i>
-                  </button>
-                </section>
-              </article>
-              <article class="book-item">
-                <section class="book-item-content">
-                  <span class="book-title">Harry Potter: Deathly Hallows</span>
-                  <div class="book-attrs">
-                    <div class="attr">
-                      <i class="fa-solid fa-feather-pointed fa-fw"></i>
-                      <span>J. K. Rowling</span>
-                    </div>
-                    <div class="attr">
-                      <i class="fa-solid fa-calendar-day fa-fw"></i>
-                      <span>2001</span>
-                    </div>
-                  </div>
-                </section>
-                <section class="book-item-actions">
-                  <button class="btn icon-btn">
-                    <i class="fa-regular fa-circle-check fa-2xl"></i>
-                  </button>
-                  <button class="btn icon-btn">
-                    <i class="fa-regular fa-trash-can fa-2xl"></i>
-                  </button>
-                </section>
-              </article>
-            </div>
+            <div id="uncompletedBookList" class="book-items"></div>
           </section>
           <section class="card">
             <h2 class="card-title">Selesai Dibaca</h2>
-            <div class="book-items">
-              <article class="book-item">
-                <section class="book-item-content">
-                  <span class="book-title">Doraemon</span>
-                  <div class="book-attrs">
-                    <div class="attr">
-                      <i class="fa-solid fa-feather-pointed fa-fw"></i>
-                      <span>Fujime Fukiko</span>
-                    </div>
-                    <div class="attr">
-                      <i class="fa-solid fa-calendar-day fa-fw"></i>
-                      <span>1999</span>
-                    </div>
-                  </div>
-                </section>
-                <section class="book-item-actions">
-                  <button class="btn icon-btn">
-                    <i class="fa-solid fa-circle-check fa-2xl"></i>
-                  </button>
-                  <button class="btn icon-btn">
-                    <i class="fa-regular fa-trash-can fa-2xl"></i>
-                  </button>
-                </section>
-              </article>
-            </div>
+            <div id="completedBookList" class="book-items"></div>
           </section>
         </div>
       </div>
