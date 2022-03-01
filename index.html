@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/a4efd995d2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Bookshelf Apps</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <h1>Bookshelf Apps</h1>
+        <form method="get" class="search-field">
+          <input
+            type="text"
+            name="search"
+            id="searchBox"
+            placeholder="Judul buku"
+            required
+          />
+          <button type="submit" id="searchBtn" class="btn">
+            <span class="fa-solid fa-magnifying-glass">Cari</span>
+          </button>
+        </form>
+      </nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        <div class="col col-30">
+          <div class="card">
+            <h2 class="card-title">Tambah Buku</h2>
+            <form action="" class="input-form">
+              <div class="input-field">
+                <label for="title">Judul</label>
+                <input type="text" name="title" id="title" required />
+              </div>
+              <div class="input-field">
+                <label for="writer">Penulis</label>
+                <input type="text" name="writer" id="writer" required />
+              </div>
+              <div class="input-field">
+                <label for="yearPublish">Tahun Terbit</label>
+                <input
+                  type="number"
+                  name="yearPublish"
+                  id="yearPublish"
+                  required
+                />
+              </div>
+              <div class="input-field-inline">
+                <input type="checkbox" name="isCompleted" id="isCompleted" />
+                <label for="isCompleted">Selesai dibaca</label>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Tambah
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col col-70">
+          <section class="card">
+            <h2 class="card-title">Belum Selesai Dibaca</h2>
+            <div class="book-items">
+              <article class="book-item">
+                <section class="book-item-content">
+                  <span class="book-title">Harry Potter</span>
+                  <div class="book-attrs">
+                    <div class="attr">
+                      <i class="fa-solid fa-feather-pointed fa-fw"></i>
+                      <span>J. K. Rowling</span>
+                    </div>
+                    <div class="attr">
+                      <i class="fa-solid fa-calendar-day fa-fw"></i>
+                      <span>1999</span>
+                    </div>
+                  </div>
+                </section>
+                <section class="book-item-actions">
+                  <button class="btn icon-btn">
+                    <i class="fa-regular fa-circle-check fa-2xl"></i>
+                  </button>
+                  <button class="btn icon-btn">
+                    <i class="fa-regular fa-trash-can fa-2xl"></i>
+                  </button>
+                </section>
+              </article>
+              <article class="book-item">
+                <section class="book-item-content">
+                  <span class="book-title">Harry Potter: Deathly Hallows</span>
+                  <div class="book-attrs">
+                    <div class="attr">
+                      <i class="fa-solid fa-feather-pointed fa-fw"></i>
+                      <span>J. K. Rowling</span>
+                    </div>
+                    <div class="attr">
+                      <i class="fa-solid fa-calendar-day fa-fw"></i>
+                      <span>2001</span>
+                    </div>
+                  </div>
+                </section>
+                <section class="book-item-actions">
+                  <button class="btn icon-btn">
+                    <i class="fa-regular fa-circle-check fa-2xl"></i>
+                  </button>
+                  <button class="btn icon-btn">
+                    <i class="fa-regular fa-trash-can fa-2xl"></i>
+                  </button>
+                </section>
+              </article>
+            </div>
+          </section>
+          <section class="card">
+            <h2 class="card-title">Selesai Dibaca</h2>
+            <div class="book-items">
+              <article class="book-item">
+                <section class="book-item-content">
+                  <span class="book-title">Doraemon</span>
+                  <div class="book-attrs">
+                    <div class="attr">
+                      <i class="fa-solid fa-feather-pointed fa-fw"></i>
+                      <span>Fujime Fukiko</span>
+                    </div>
+                    <div class="attr">
+                      <i class="fa-solid fa-calendar-day fa-fw"></i>
+                      <span>1999</span>
+                    </div>
+                  </div>
+                </section>
+                <section class="book-item-actions">
+                  <button class="btn icon-btn">
+                    <i class="fa-solid fa-circle-check fa-2xl"></i>
+                  </button>
+                  <button class="btn icon-btn">
+                    <i class="fa-regular fa-trash-can fa-2xl"></i>
+                  </button>
+                </section>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <section>
+        <span>&copy; 2021,</span>
+        <a
+          href="https://github.com/fityannugroho"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          fityannugroho
+        </a>
+      </section>
+      <section>
+        <p>
+          Icons by
+          <a
+            href="https://fontawesome.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-solid fa-font-awesome"></i>
+            Font Awesome
+          </a>
+          &amp; font using
+          <a
+            href="https://fonts.google.com/specimen/Fredoka"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fredoka
+          </a>
+        </p>
+      </section>
+    </footer>
+    <script src="/scripts/index.js"></script>
+  </body>
+</html>
