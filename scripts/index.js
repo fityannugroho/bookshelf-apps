@@ -10,6 +10,29 @@ const INPUT_COMPLETED_SELECTOR = '#isCompleted';
 const books = [];
 
 // -------- Function --------
+const isStorageExists = () => {
+  if (typeof Storage === undefined) {
+    alert('Browser kamu tidak mendukung local storage');
+    return false;
+  }
+  return true;
+};
+
+const saveBooks = () => {
+  if (isStorageExists()) {
+    const booksParsed = JSON.stringify(books);
+    localStorage.setItem(STORAGE_KEY, booksParsed);
+  }
+};
+
+const loadBooks = () => {
+  const serializedBooks = localStorage.getItem(STORAGE_KEY);
+  const booksJson = JSON.parse(serializedBooks);
+
+  if (booksJson !== null) booksJson.forEach((book) => books.push(book));
+  document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+};
+
 const generateId = () => {
   return 'BOOK' + Date.now();
 };
@@ -43,6 +66,7 @@ const addBook = () => {
   books.push(newBook);
 
   document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+  saveBooks();
 };
 
 const setBookCompleted = (bookId) => {
@@ -51,6 +75,7 @@ const setBookCompleted = (bookId) => {
 
   bookTarget.isComplete = true;
   document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+  saveBooks();
 };
 
 const setBookUncompleted = (bookId) => {
@@ -59,6 +84,7 @@ const setBookUncompleted = (bookId) => {
 
   bookTarget.isComplete = false;
   document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+  saveBooks();
 };
 
 const deleteBook = (bookId) => {
@@ -67,6 +93,7 @@ const deleteBook = (bookId) => {
 
   books.splice(bookIndex, 1);
   document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+  saveBooks();
 };
 
 const showDeleteBookModal = (book) => {
@@ -144,12 +171,6 @@ const resetAddBookForm = () => {
   document.querySelector(INPUT_COMPLETED_SELECTOR).checked = false;
 };
 
-const loadBooks = () => {
-  // TODO: get data from storage
-  // ...
-  document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
-};
-
 // -------- Event Handler --------
 // Custom Event: Load books event.
 document.addEventListener(LOAD_BOOKS_EVENT, () => {
@@ -196,5 +217,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Load all books.
-  loadBooks();
+  if (isStorageExists()) loadBooks();
 });
