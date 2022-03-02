@@ -69,6 +69,20 @@ const deleteBook = (bookId) => {
   document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
 };
 
+const showDeleteBookModal = (book) => {
+  const deleteBookModal = document.querySelector('#deleteBookModal');
+  const titleView = deleteBookModal.querySelector('[data-modal="bookTitle"]');
+
+  titleView.innerText = book.title;
+  deleteBookModal.removeAttribute('hidden');
+
+  // Delete book item button.
+  deleteBookModal.querySelector('[data-modal="btnDelete"]').onclick = () => {
+    deleteBook(book.id);
+    deleteBookModal.setAttribute('hidden', '');
+  };
+};
+
 const makeBookItem = (book) => {
   const bookItem = document.createElement('article');
   bookItem.classList.add('book-item');
@@ -112,19 +126,7 @@ const makeBookItem = (book) => {
   btnDelete.innerHTML = `<i class="fa-regular fa-trash-can fa-2xl"></i>`;
 
   btnDelete.addEventListener('click', () => {
-    const deleteBookModal = document.querySelector('#deleteBookModal');
-    const bookTitleView = deleteBookModal.querySelector(
-      '[data-modal="bookTitle"]'
-    );
-
-    bookTitleView.innerText = book.title;
-    deleteBookModal.removeAttribute('hidden');
-
-    // Delete book item button.
-    deleteBookModal.querySelector('[data-modal="btnDelete"]').onclick = () => {
-      deleteBook(book.id);
-      deleteBookModal.setAttribute('hidden', '');
-    };
+    showDeleteBookModal(book);
   });
 
   actions.appendChild(btnCheck);
