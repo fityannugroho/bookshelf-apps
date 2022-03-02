@@ -24,6 +24,13 @@ const generateBook = (title, author, year, isComplete = false) => {
   };
 };
 
+const findBook = (bookId) => {
+  for (const book of books) {
+    if (book.id === bookId) return book;
+  }
+  return null;
+};
+
 const addBook = () => {
   // Get value from inputs.
   const title = document.querySelector(INPUT_TITLE_SELECTOR).value;
@@ -35,6 +42,30 @@ const addBook = () => {
   const newBook = generateBook(title, author, year, isCompleted);
   books.push(newBook);
 
+  document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+};
+
+const setBookCompleted = (bookId) => {
+  const bookTarget = findBook(bookId);
+  if (bookTarget === null) return;
+
+  bookTarget.isComplete = true;
+  document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+};
+
+const setBookUncompleted = (bookId) => {
+  const bookTarget = findBook(bookId);
+  if (bookTarget === null) return;
+
+  bookTarget.isComplete = false;
+  document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
+};
+
+const deleteBook = (bookId) => {
+  const bookIndex = books.indexOf(findBook(bookId));
+  if (bookIndex === -1) return;
+
+  books.splice(bookIndex, 1);
   document.dispatchEvent(new Event(LOAD_BOOKS_EVENT));
 };
 
@@ -63,26 +94,27 @@ const makeBookItem = (book) => {
   const actions = document.createElement('section');
   actions.classList.add('book-item-actions');
 
-  if (book.isComplete) {
-    actions.innerHTML = `
-      <button class="btn icon-btn">
-        <i class="fa-solid fa-circle-check fa-2xl"></i>
-      </button>
-      <button class="btn icon-btn">
-        <i class="fa-regular fa-trash-can fa-2xl"></i>
-      </button>
-    `;
-  } else {
-    actions.innerHTML = `
-      <button class="btn icon-btn">
-        <i class="fa-regular fa-circle-check fa-2xl"></i>
-      </button>
-      <button class="btn icon-btn">
-        <i class="fa-regular fa-trash-can fa-2xl"></i>
-      </button>
-    `;
-  }
+  // Make check button.
+  const btnCheck = document.createElement('button');
+  btnCheck.classList.add('btn', 'icon-btn');
+  btnCheck.innerHTML = book.isComplete
+    ? `<i class="fa-solid fa-circle-check fa-2xl"></i>`
+    : `<i class="fa-regular fa-circle-check fa-2xl"></i>`;
 
+  btnCheck.addEventListener('click', () => {
+    if (book.isComplete) setBookUncompleted(book.id);
+    else setBookCompleted(book.id);
+  });
+
+  // Make delete button.
+  const btnDelete = document.createElement('button');
+  btnDelete.classList.add('btn', 'icon-btn');
+  btnDelete.innerHTML = `<i class="fa-regular fa-trash-can fa-2xl"></i>`;
+
+  btnDelete.addEventListener('click', () => deleteBook(book.id));
+
+  actions.appendChild(btnCheck);
+  actions.appendChild(btnDelete);
   bookItem.appendChild(content);
   bookItem.appendChild(actions);
 
