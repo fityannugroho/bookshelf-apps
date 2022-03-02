@@ -238,7 +238,8 @@ p {
   display: flex;
   gap: 0;
 
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .input-form {
@@ -335,8 +336,15 @@ p {
   font-weight: bolder;
 }
 
+.footer p {
+  text-align: center;
+}
+
 /* ----------- Tablet ----------- */
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 1080px) {
+  .wrapper {
+    width: 100%;
+  }
 }
 
 /* ----------- Mobile ----------- */
