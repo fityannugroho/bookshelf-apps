@@ -95,6 +95,14 @@ p {
   padding: 0.25rem;
 }
 
+.wrapper {
+  display: flex;
+  gap: 0;
+
+  width: 80%;
+  margin: 0 auto;
+}
+
 .col {
   display: flex;
   flex-direction: column;
@@ -186,14 +194,16 @@ p {
 }
 
 .navbar {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.navbar > .wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-
-  padding: 1rem 1.5rem;
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
 }
 
 .navbar h1 {
@@ -232,14 +242,6 @@ p {
 .search-field > .btn:hover {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
-}
-
-.wrapper {
-  display: flex;
-  gap: 0;
-
-  width: 80%;
-  margin: 0 auto;
 }
 
 .input-form {
@@ -352,7 +354,16 @@ p {
   .wrapper {
     flex-direction: column;
   }
+
+  .navbar > .wrapper {
+    flex-direction: row;
+  }
 }
 
 @media screen and (max-width: 414px) {
+  .navbar > .wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
 }
