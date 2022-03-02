@@ -138,9 +138,10 @@ const makeBookItem = (book) => {
   // Make check button.
   const btnCheck = document.createElement('button');
   btnCheck.classList.add('btn', 'icon-btn');
+  btnCheck.setAttribute('title', 'Read status');
   btnCheck.innerHTML = book.isComplete
-    ? `<i class="fa-solid fa-circle-check fa-2xl"></i>`
-    : `<i class="fa-regular fa-circle-check fa-2xl"></i>`;
+    ? `<i class="fa-solid fa-circle-check fa-2xl">Uncompleted</i>`
+    : `<i class="fa-regular fa-circle-check fa-2xl">Completed</i>`;
 
   btnCheck.addEventListener('click', () => {
     if (book.isComplete) setBookUncompleted(book.id);
@@ -150,7 +151,8 @@ const makeBookItem = (book) => {
   // Make delete button.
   const btnDelete = document.createElement('button');
   btnDelete.classList.add('btn', 'icon-btn');
-  btnDelete.innerHTML = `<i class="fa-regular fa-trash-can fa-2xl"></i>`;
+  btnDelete.setAttribute('title', 'Delete book');
+  btnDelete.innerHTML = `<i class="fa-regular fa-trash-can fa-2xl">Delete</i>`;
 
   btnDelete.addEventListener('click', () => {
     showDeleteBookModal(book);
