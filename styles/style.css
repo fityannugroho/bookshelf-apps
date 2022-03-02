@@ -285,6 +285,10 @@ p {
   border-radius: 0.5rem;
 }
 
+.book-item[hidden] {
+  display: none;
+}
+
 .book-item-content {
   display: flex;
   flex-direction: column;

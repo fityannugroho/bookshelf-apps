@@ -218,4 +218,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load all books.
   if (isStorageExists()) loadBooks();
+
+  // Search book by title.
+  const searchBtn = document.querySelector('#searchBtn');
+
+  searchBtn.addEventListener('click', (e) => {
+    const titleKeyword = document.querySelector('#searchBox').value;
+    const bookItems = document.querySelectorAll('.book-item');
+
+    bookItems.forEach((bookItem) => {
+      const bookTitle = bookItem.querySelector('.book-title').innerText;
+      // Filter books by non case-sensitive title.
+      if (bookTitle.toLowerCase().includes(titleKeyword.toLowerCase())) {
+        bookItem.removeAttribute('hidden');
+      } else {
+        bookItem.setAttribute('hidden', '');
+      }
+    });
+
+    e.preventDefault();
+  });
 });
