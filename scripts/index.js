@@ -111,7 +111,21 @@ const makeBookItem = (book) => {
   btnDelete.classList.add('btn', 'icon-btn');
   btnDelete.innerHTML = `<i class="fa-regular fa-trash-can fa-2xl"></i>`;
 
-  btnDelete.addEventListener('click', () => deleteBook(book.id));
+  btnDelete.addEventListener('click', () => {
+    const deleteBookModal = document.querySelector('#deleteBookModal');
+    const bookTitleView = deleteBookModal.querySelector(
+      '[data-modal="bookTitle"]'
+    );
+
+    bookTitleView.innerText = book.title;
+    deleteBookModal.removeAttribute('hidden');
+
+    // Delete book item button.
+    deleteBookModal.querySelector('[data-modal="btnDelete"]').onclick = () => {
+      deleteBook(book.id);
+      deleteBookModal.setAttribute('hidden', '');
+    };
+  });
 
   actions.appendChild(btnCheck);
   actions.appendChild(btnDelete);
@@ -163,6 +177,20 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     addBook();
     resetAddBookForm();
+  });
+
+  // Load all modals.
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach((modal) => {
+    const btnDismiss = modal.querySelector('[data-modal="btnDismiss"]');
+    const btnCancel = modal.querySelector('[data-modal="btnCancel"]');
+
+    btnDismiss.addEventListener('click', () => {
+      modal.setAttribute('hidden', '');
+    });
+    btnCancel.addEventListener('click', () => {
+      modal.setAttribute('hidden', '');
+    });
   });
 
   // Load all books.

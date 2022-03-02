@@ -63,6 +63,28 @@
           </div>
         </div>
         <div class="col col-70">
+          <div id="deleteBookModal" class="modal" hidden>
+            <div class="modal-header">
+              <span data-modal="title" class="modal-title">Hapus Buku</span>
+              <button data-modal="btnDismiss" class="btn icon-btn">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Anda yakin ingin menghapus buku berjudul
+                <strong data-modal="bookTitle"></strong> ?
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button data-modal="btnCancel" class="btn btn-primary">
+                Tidak
+              </button>
+              <button data-modal="btnDelete" class="btn btn-danger-outline">
+                Ya, hapus buku
+              </button>
+            </div>
+          </div>
           <section class="card">
             <h2 class="card-title">Belum Selesai Dibaca</h2>
             <div id="uncompletedBookList" class="book-items"></div>
